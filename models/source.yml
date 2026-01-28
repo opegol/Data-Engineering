@@ -1,0 +1,49 @@
+
+version: 2
+
+sources:
+  - name: raw
+    database: sales_data
+    schema: public
+    tables:
+      - name: sales_raw
+
+
+models:
+  - name: stg_sales
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+      - name: order_date
+      - name: customer_id
+      - name: customer_name
+      - name: product
+      - name: category
+        data_tests:
+          - accepted_values:
+              values: ['Electronics', 'Home Appliances']
+      - name: quantity
+      - name: unit_price
+      - name: country
+      - name: created_at
+
+  - name: fct_sales
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+
+      - name: total_amount
+        data_tests:
+          - not_null
+
+  - name: agg_sales_summary
+    columns:
+      - name: country
+        data_tests:
+          - not_null
+
+      - name: category
+        data_tests:
+          - not_null
