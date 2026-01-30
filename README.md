@@ -214,6 +214,6 @@ dbt test
 
 ---
 
-**Author:** Ope Olubodun
+**Author:** Ope O.
 
 **Purpose:** AI NOW Data Engineering Project (Educational / Skill Development)
